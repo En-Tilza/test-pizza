@@ -1,0 +1,15 @@
+// Формула для адаптивных шрифтов. Например:
+// font-size: calcFluid(15, 18, 320, 1920);
+// на разрешении 320 шрифт будет 15px, а на 1920 шритф будет 18px
+@function calcFluid($f-min, $f-max, $v-min, $v-max) {
+	$k: ($f-max - $f-min)/($v-max - $v-min);
+	$b: $f-min - $k * $v-min;
+  
+	$b: $b * 1px;
+  
+	@return calc( #{$k} * 100vw + #{$b} );
+}
+
+
+
+$site-color: #65fcce;

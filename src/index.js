@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
@@ -10,7 +10,7 @@ import { createStore } from 'redux';
 
 
 // js
-import makeRequest from './components/scripts/make-request';
+import makeRequest from './scripts/make-request';
 
 
 function reducer(state = {}, action) {

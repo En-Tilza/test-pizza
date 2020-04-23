@@ -1,0 +1,11 @@
+@import '../../style/theme.scss';
+
+.header {
+    background-color: #313131;
+    &__wrapper {
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
