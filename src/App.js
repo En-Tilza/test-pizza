@@ -11,7 +11,7 @@ import Header from './pages/header/header';
 import Footer from './pages/footer/footer';
 import Home from './pages/main-page/main-page';
 import Employees from './pages/employees/employees';
-import Employe from './pages/employe/employe';
+// import Employe from './pages/employe/employe';
 
 
 
@@ -31,7 +31,7 @@ function App() {
 					</Route>
 
 					<Route path="/">
-						{/* <Home /> */}
+						<Home />
 					</Route>
 				</Switch>
 			</div>

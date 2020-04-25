@@ -1,0 +1,86 @@
+@import '../../style/theme.scss';
+.custom-select {
+	position: relative;
+	width: 150px;
+	&:hover {
+		.custom-select-header__text {
+			&:after {
+				opacity: 0;
+			}
+		}
+	}
+}
+
+.custom-select-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    height: 40px;
+    background-color: #fff;
+    border: 2px solid $main-color;
+    border-radius: 4px;
+    transition: .2s;
+    $this:&;
+    &:hover {
+        background-color: $main-color;
+    }
+	&__option {
+		font-size: 14px;
+		line-height: 18px;
+		font-weight: 400;
+		color: #333;
+		// border-bottom: 1px dashed rgba(#333, .75);
+		display: inline-block;
+		transition: .3s;
+		position: relative;
+		&:after {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			height: 1px;
+			// background-image: url(../images/dashed.png);
+			background-position: center;
+			transition: .3s;
+		}
+	}
+	&__svg {
+		margin-right: 5px;
+		fill: #333;
+	}
+}
+
+.custom-select-dropdown {
+    position: absolute;
+    top: 100%;
+    box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
+    padding: 15px 15px;
+    transition: .2s;
+    opacity: 0;
+    z-index: -1;
+    visibility: hidden;
+    background-color: #fff;
+    width: 100%;
+	&.active {
+        transition: opacity .5s;
+		opacity: 1;
+		z-index: 1;
+		visibility: visible;
+    }
+    &__item {
+        &:not(:last-child) {
+            margin-bottom: 10px;
+        }
+    }
+    &__option {
+        font-size: 16px;
+        color: #313131;
+        transition:.2s;
+        display: block;
+        &:hover {
+            color: $main-color;
+        }
+    }
+}

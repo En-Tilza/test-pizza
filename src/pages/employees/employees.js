@@ -7,6 +7,7 @@ import './employees.scss';
 // components
 import Container from '../../components/container/container';
 import PageTitle from '../../components/page-title/page-title';
+import Card from '../../components/card/card';
 
 class Employees extends Component {
     render() {
@@ -14,13 +15,13 @@ class Employees extends Component {
         return(
             <section className="page">
                 <Container>
-                    <PageTitle>Employees</PageTitle>
+                    <PageTitle>Сотрудники</PageTitle>
 
                     <div className="employees">
                         {employees ? (
                             <>
-                                {employees.map((user, index) =>
-                                    <div key={index}>{user.name}</div>
+                                {employees.map((employe, index) =>
+                                    <Card employe={employe} key={index} />
                                 )}
                             </>
                         ): (

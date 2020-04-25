@@ -43,3 +43,7 @@ a {
     padding: calcFluid(15, 30, 320, 1920) 0 calcFluid(20, 50, 320, 1920);
     flex: 1 1 auto;
 }
+
+.main-color {
+    color: $main-color;
+}

@@ -9,10 +9,10 @@ export default class Menu extends Component {
         return(
             <ul className="menu">
                 <li className="menu__item">
-                    <a href="/" className="menu__link">Home</a>
+                    <a href="/" className="menu__link">Главная</a>
                 </li>
                 <li className="menu__item">
-                    <a href="/employees" className="menu__link">Employees</a>
+                    <a href="/employees" className="menu__link">Сотрудники</a>
                 </li>
             </ul>
         )
