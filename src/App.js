@@ -7,8 +7,8 @@ import {
 
 
 // pages
-import Header from './pages/header/header';
-import Footer from './pages/footer/footer';
+import Header from './components/surfaces/header/header';
+import Footer from './components/surfaces/footer/footer';
 import Home from './pages/main-page/main-page';
 import Employees from './pages/employees/employees';
 // import Employe from './pages/employe/employe';

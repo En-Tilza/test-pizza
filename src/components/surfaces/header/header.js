@@ -5,9 +5,9 @@ import './general.scss';
 import './header.scss';
 
 // components
-import Logo from '../../components/logo/logo';
-import Container from '../../components/container/container';
-import Menu from '../../components/menu/menu';
+import Logo from '../../logo/logo';
+import Container from '../../layout/container/container';
+import Menu from '../../navigation/menu/menu';
 
 export default class Header extends Component {
     render() {

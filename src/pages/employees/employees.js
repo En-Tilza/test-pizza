@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 import './employees.scss';
 
 // components
-import Container from '../../components/container/container';
-import PageTitle from '../../components/page-title/page-title';
-import Card from '../../components/card/card';
+import Container from '../../components/layout/container/container';
+import PageTitle from '../../components/layout/page-title/page-title';
+import Card from '../../components/moduls/card/card';
 
 class Employees extends Component {
     render() {

@@ -1,32 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { store } from './store/index';
+import { addEmployees } from './store/employees/actions';
+
+import makeRequest from './services/make-request';
+
 
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
 
-
-// js
-import makeRequest from './scripts/make-request';
-
-
-function reducer(state = {}, action) {
-    if( action.type === 'add' ) {
-        return state = {
-            ...state,
-            employees: action.employees
-        }
-    } 
-    return state
-}
-
-const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() );
-
-
-async function collection() {
+async function getEmployees() {
 	let request = {
         method: 'GET',
         employees: {
@@ -38,9 +24,10 @@ async function collection() {
 
     let employees = JSON.parse(json);
 
-    store.dispatch({ type: 'add', employees: employees });
+    store.dispatch(addEmployees(employees));
 }
-collection();
+
+getEmployees();
 
 
 

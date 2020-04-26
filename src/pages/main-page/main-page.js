@@ -2,19 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 
-// style
 import './main-page.scss';
 
-// components
-import Container from '../../components/container/container';
-import PageTitle from '../../components/page-title/page-title';
-import Card from '../../components/card/card';
-import Dropdown from '../../components/dropdown/dropdown';
+import Container from '../../components/layout/container/container';
+import PageTitle from '../../components/layout/page-title/page-title';
+import Filters from '../../components/navigation/filters/filters';
+import Card from '../../components/moduls/card/card';
 
 
 class Home extends Component {
     render() {
-        const { employees } = this.props.newStore
+        const { employees } = this.props
         return(
             <section className="page">
                 <Container>
@@ -27,12 +25,8 @@ class Home extends Component {
                             <h2>Сотрудники</h2>
                         </div>
 
-                        <div className="filter">
-                            <button type="button" className="reset-filters">Все</button>
+                        <Filters />
 
-                            <Dropdown variables={['ASC', 'DESC']} orderby={'По алфавиту'}/>
-                            <Dropdown variables={['ASC', 'DESC']} orderby={'По дате'}/>
-                        </div>
                         <div className="employees">
                             {employees ? (
                                 <>
@@ -52,10 +46,9 @@ class Home extends Component {
 }
 
 
-
-export default connect(
-    state => ({
-        newStore: state
-    }),
-    dispatch => ({})
-)(Home)
+function mapStateToProps(state) {
+    return {
+        employees: state.store.employees
+    }
+}
+export default connect(mapStateToProps)(Home)

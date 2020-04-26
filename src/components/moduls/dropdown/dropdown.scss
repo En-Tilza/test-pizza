@@ -1,4 +1,4 @@
-@import '../../style/theme.scss';
+@import '../../../style/theme.scss';
 .custom-select {
 	position: relative;
 	width: 150px;
@@ -17,10 +17,12 @@
     justify-content: center;
     cursor: pointer;
     height: 40px;
+    width: 100%;
     background-color: #fff;
     border: 2px solid $main-color;
     border-radius: 4px;
     transition: .2s;
+    outline: none;
     $this:&;
     &:hover {
         background-color: $main-color;
@@ -63,7 +65,7 @@
     visibility: hidden;
     background-color: #fff;
     width: 100%;
-	&.active {
+	&.open {
         transition: opacity .5s;
 		opacity: 1;
 		z-index: 1;
@@ -77,10 +79,29 @@
     &__option {
         font-size: 16px;
         color: #313131;
-        transition:.2s;
+        transition: color .2s;
         display: block;
+        position: relative;
         &:hover {
             color: $main-color;
+        }
+        &:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            height: 2px;
+            width: 5px;
+            background-color: $main-color;
+            opacity: 0;
+        }
+        &.active {
+            padding-left: 10px;
+            &:after {
+                opacity: 1;
+            }
         }
     }
 }

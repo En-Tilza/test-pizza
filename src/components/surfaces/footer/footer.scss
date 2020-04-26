@@ -1,6 +1,6 @@
-@import '../../style/theme.scss';
+@import '../../../style/theme.scss';
 
-.header {
+.footer {
     background-color: #313131;
     &__wrapper {
         height: 50px;
@@ -9,3 +9,4 @@
         justify-content: space-between;
     }
 }
+
