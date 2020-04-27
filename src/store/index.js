@@ -1,9 +1,7 @@
 import {
     createStore,
-    combineReducers,
-    applyMiddleware
+    combineReducers
 } from 'redux';  
-import thunk from 'redux-thunk';
 
 import employees from './employees/reducer';
 
@@ -16,7 +14,7 @@ const makeStore = (initialState = {}) => {
     let store = createStore(
         rootReducer,
         initialState,
-        applyMiddleware(thunk)
+        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     );
 
     return store;

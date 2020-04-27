@@ -14,11 +14,11 @@ export default class Checkbox extends Component {
             this.props.func(event.target.checked);
     }
     render() {
-        const { name, children } = this.props;
+        const { name, children, checked } = this.props;
 
         return(
             <label className="checkbox">
-                <input name={name} type="checkbox" className="checkbox__input" onChange={this.onChange} />
+                <input name={name} type="checkbox" className="checkbox__input" onChange={this.onChange} checked={checked} />
                 <span className="checkbox__text">{children}</span>
             </label>
         )

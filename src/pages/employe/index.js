@@ -35,9 +35,10 @@ class Employee extends Component {
     async userUpdate(event) {
         event.preventDefault();
         let data = new FormData(event.target);
+        data.append('userId', this.props.store.employee.id)
 
         let response = await fetch('api/employees.json', {
-            method: 'POST',
+            method: 'PUT',
             body: data
         }).then(response => response.json());
         console.log(response)
@@ -78,7 +79,7 @@ class Employee extends Component {
                             </div>
                             <div className="edit-form__row">
                                 <div className="field field--center">
-                                    <Checkbox name="archive">В архиве</Checkbox>
+                                    <Checkbox name="archive" checked={employee.isArchive}>В архиве</Checkbox>
                                 </div>
                             </div>
                             <div className="edit-form__row">
