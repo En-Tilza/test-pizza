@@ -1,0 +1,33 @@
+@import './theme.scss';
+
+body, button, input, textarea {
+    font-family: Roboto, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a, a:hover {
+    text-decoration: none;
+}
+
+ul, li {
+    list-style-type: none;
+}
+
+body, ul, ol {
+    margin: 0;
+    padding: 0;
+}
+
+.main-color {
+    color: $main-color;
+}
+
+
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}

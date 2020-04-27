@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { store } from './store/index';
-import { addEmployees } from './store/employees/actions';
+import { store } from 'store/index';
+import { addEmployees } from 'store/employees/actions';
 
-import makeRequest from './services/make-request';
+import makeRequest from 'services/make-request';
 
 
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import App from 'App';
+import * as serviceWorker from 'serviceWorker';
 
 
 

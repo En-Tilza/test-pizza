@@ -1,0 +1,11 @@
+@import 'style/theme.scss';
+
+
+
+.page-title {
+    font-size: calcFluid(36, 56, 320, 1920);
+    line-height: calcFluid(42, 62, 320, 1920);
+    color: #000;
+    display: block;
+    margin-bottom: calcFluid(15, 30, 320, 1920);
+}

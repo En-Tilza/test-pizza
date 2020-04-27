@@ -1,0 +1,14 @@
+.checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    height: 40px;
+    width: 140px;
+    background-color: #fff;
+    border: 2px solid #65fcce;
+    border-radius: 4px;
+    transition: .2s;
+    outline: none;
+    margin-left: 30px;
+}

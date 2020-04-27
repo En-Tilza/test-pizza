@@ -7,13 +7,6 @@ export function addEmployees(employees) {
     };
 }
 
-export function filteredEmployees(employees) {
-    return {
-        type: types.FILTERED_EMPLOYEES,
-        employees
-    };
-}
-
 export function sortByNameASC(employees) {
     employees = employees.sort((a, b) => a.name > b.name ? 1 : -1);
     return {

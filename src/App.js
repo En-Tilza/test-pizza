@@ -6,19 +6,20 @@ import {
 } from "react-router-dom";
 
 
-// pages
-import Header from './components/surfaces/header/header';
-import Footer from './components/surfaces/footer/footer';
-import Home from './pages/main-page/main-page';
-import Employees from './pages/employees/employees';
-// import Employe from './pages/employe/employe';
+
+import Header from 'components/header';
+import Footer from 'components/footer';
+import PageWrapper from 'components/page-wrapper';
+import Home from 'pages/main-page';
+import Employees from 'pages/employees';
+import Employe from 'pages/employe';
 
 
 
 function App() {
 	return (
 		<Router>
-			<div className="page-wrapper">
+			<PageWrapper>
 				<Header />
 
 				<Switch>
@@ -26,15 +27,15 @@ function App() {
 						<Employees />
 					</Route>
 
-					<Route path="/employe">
-						{/* <Employe /> */}
+					<Route path="/employee">
+						<Employe />
 					</Route>
 
 					<Route path="/">
 						<Home />
 					</Route>
 				</Switch>
-			</div>
+			</PageWrapper>
 
 			<Footer />
 		</Router>
