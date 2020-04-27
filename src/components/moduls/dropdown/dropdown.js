@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 // style
 import './dropdown.scss';
 
-class Dropdown extends Component {
+export default class Dropdown extends Component {
     constructor(props) {
         super(props);
 
@@ -27,13 +26,13 @@ class Dropdown extends Component {
             select: event.currentTarget.innerText
         })
 
-        this.props.updateStore();
+        this.props.updateStore(event.currentTarget.innerText);
     }
     render() {
         const { values, orderby } = this.props;
 
         return(
-            <div className="custom-select">
+            <div className="custom-select" ref="">
                 <button type="button" className="custom-select-header" data-selected={this.state.select} onClick={this.dropdownToggle}>
                     <span className="custom-select-header__option">{orderby}</span>
                 </button>
@@ -49,14 +48,3 @@ class Dropdown extends Component {
         )
     }
 }
-
-
-
-function mapStateToProps(state) {
-    return {
-        store: state
-    }
-}
-
-
-export default connect(mapStateToProps)(Dropdown)

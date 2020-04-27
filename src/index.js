@@ -29,6 +29,9 @@ async function getEmployees() {
 
 getEmployees();
 
+store.subscribe(() => {
+    // console.log(store.getState())
+})
 
 
 ReactDOM.render(

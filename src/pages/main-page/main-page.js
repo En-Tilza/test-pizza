@@ -12,7 +12,9 @@ import Card from '../../components/moduls/card/card';
 
 class Home extends Component {
     render() {
-        const { employees } = this.props
+        const { employees } = this.props.employees
+
+        console.log('render');
         return(
             <section className="page">
                 <Container>
@@ -48,7 +50,7 @@ class Home extends Component {
 
 function mapStateToProps(state) {
     return {
-        employees: state.store.employees
+        employees: state.employees
     }
 }
 export default connect(mapStateToProps)(Home)

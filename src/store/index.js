@@ -8,8 +8,7 @@ import thunk from 'redux-thunk';
 import employees from './employees/reducer';
 
 
-const rootReducer = combineReducers({ store: employees });
-
+const rootReducer = combineReducers({ employees });
 
 
 
