@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addEmployees, sortByNameASC, sortByNameDESC, sortByDateASC, sortByDateDESC } from 'store/employees/actions';
 
+import './index.scss';
 
 import Dropdown from 'components/dropdown';
 import Checkbox from 'components/checkbox';
@@ -23,15 +24,11 @@ class Filters extends Component {
     sortByName(orderby) {
         if( orderby === 'ASC' ) this.props.sortByNameASC(this.props.employees);
         if( orderby === 'DESC' ) this.props.sortByNameDESC(this.props.employees);
-
-        this.allEmployees = this.props.employees;
     }
 
     sortByDate(orderby) {
         if( orderby === 'ASC' ) this.props.sortByDateASC(this.props.employees);
         if( orderby === 'DESC' ) this.props.sortByDateDESC(this.props.employees);
-
-        this.allEmployees = this.props.employees;
     }
 
     sortByPost(orderby) {
@@ -78,11 +75,11 @@ class Filters extends Component {
             <div className="filter">
                 <button type="button" className="reset-filters" onClick={this.showAllEmployees}>Все</button>
 
-                <Dropdown values={['ASC', 'DESC']} orderby={'По алфавиту'} updateStore={this.sortByName}/>
-                <Dropdown values={['ASC', 'DESC']} orderby={'По дате'} updateStore={this.sortByDate}/>
-                <Dropdown values={['Повар', 'Курьер', 'Официант']} orderby={'Должность'} updateStore={this.updateByPost}/>
+                <Dropdown values={['ASC', 'DESC']} name={'По алфавиту'} func={this.sortByName}/>
+                <Dropdown values={['ASC', 'DESC']} name={'По дате'} func={this.sortByDate}/>
+                <Dropdown values={['Повар', 'Курьер', 'Официант']} name={'Должность'} func={this.updateByPost}/>
 
-                <Checkbox updateStore={this.archive}>В архиве</Checkbox>
+                <Checkbox func={this.archive}>В архиве</Checkbox>
             </div>
         )
     }

@@ -23,26 +23,3 @@
     width: calc(100% + 30px);
     margin-left: -15px;
 }
-
-.filter {
-    display: flex;
-    align-items: center;
-    margin-bottom: 50px;
-    .custom-select {
-        margin-left: 10px;
-    }
-}
-.reset-filters {
-    display: block;
-    height: 40px;
-    width: 150px;
-    cursor: pointer;
-    background-color: $main-color;
-    color: #313131;
-    border: 2px solid $main-color;
-    border-radius: 4px;
-    transition:.2s;
-    &:hover {
-        background-color: transparent;
-    }
-}

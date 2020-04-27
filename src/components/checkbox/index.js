@@ -10,13 +10,16 @@ export default class Checkbox extends Component {
         this.onChange = this.onChange.bind(this);
     }
     onChange(event) {
-        this.props.updateStore(event.target.checked)
+        if( this.props.func )
+            this.props.func(event.target.checked);
     }
     render() {
+        const { name, children } = this.props;
+
         return(
             <label className="checkbox">
-                <input type="checkbox" className="checkbox__input" onChange={this.onChange} />
-                <span className="checkbox__text">{this.props.children}</span>
+                <input name={name} type="checkbox" className="checkbox__input" onChange={this.onChange} />
+                <span className="checkbox__text">{children}</span>
             </label>
         )
     }
