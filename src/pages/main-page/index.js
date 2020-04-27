@@ -14,7 +14,6 @@ class Home extends Component {
     render() {
         const { employees } = this.props.employees
 
-        console.log('render');
         return(
             <section className="page">
                 <Container>

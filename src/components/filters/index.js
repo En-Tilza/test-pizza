@@ -15,16 +15,23 @@ class Filters extends Component {
         this.updateByPost = this.updateByPost.bind(this);
         this.archive = this.archive.bind(this);
         this.showAllEmployees = this.showAllEmployees.bind(this);
+
+
+        this.filteredEmployees = [];
     }
 
     sortByName(orderby) {
         if( orderby === 'ASC' ) this.props.sortByNameASC(this.props.employees);
         if( orderby === 'DESC' ) this.props.sortByNameDESC(this.props.employees);
+
+        this.allEmployees = this.props.employees;
     }
 
     sortByDate(orderby) {
         if( orderby === 'ASC' ) this.props.sortByDateASC(this.props.employees);
         if( orderby === 'DESC' ) this.props.sortByDateDESC(this.props.employees);
+
+        this.allEmployees = this.props.employees;
     }
 
     sortByPost(orderby) {
@@ -44,23 +51,29 @@ class Filters extends Component {
     updateByPost(orderby) {
         let newStore = this.sortByPost(orderby);
         this.props.addEmployees(newStore);
+
+        this.filteredEmployees = newStore;
     }
 
     archive(input) {
-        let newStore = this.allEmployees.filter(el => {
-            return el.isArchive === input;
-        })
+        let arr = this.filteredEmployees.length ? this.filteredEmployees : this.allEmployees;
+
+        let newStore = arr.filter(el => el.isArchive === input);
         this.props.addEmployees(newStore);
     }
 
     showAllEmployees() {
+        console.log( this.allEmployees )
         this.props.addEmployees(this.allEmployees);
+        this.filteredEmployees = [];
+    }
+
+    componentDidUpdate(prevProps) {
+        if( this.allEmployees === undefined )
+            this.allEmployees = this.props.employees;
     }
 
     render() {
-        if( this.allEmployees === undefined )
-            this.allEmployees = this.props.employees;
-
         return(
             <div className="filter">
                 <button type="button" className="reset-filters" onClick={this.showAllEmployees}>Все</button>

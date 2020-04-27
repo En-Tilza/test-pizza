@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-// style
 import './index.scss';
 
-// components
 import Container from 'components/container';
 import PageSection from 'components/page-section';
 import PageTitle from 'components/page-title';

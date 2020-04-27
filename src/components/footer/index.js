@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 
-// style
 import './index.scss';
 
-// components
 import Logo from 'components/logo';
 import Container from 'components/container';
 import Menu from 'components/menu';

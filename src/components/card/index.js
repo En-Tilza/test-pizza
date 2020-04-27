@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 
-// style
 import './index.scss'
 
-
-// icon
 import driverMale from 'images/driver-male.svg';
 import driverFamale from 'images/driver-famale.svg';
 import waiter from 'images/waiter.svg';

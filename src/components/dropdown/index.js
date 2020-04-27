@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-// style
 import './index.scss';
 
 export default class Dropdown extends Component {
@@ -12,13 +11,22 @@ export default class Dropdown extends Component {
             select: ''
         }
 
+        this.refSelect = React.createRef();
+
         this.dropdownToggle = this.dropdownToggle.bind(this);
         this.dropdownSelect = this.dropdownSelect.bind(this);
+        this.windowEvent = this.windowEvent.bind(this);
     }
+
     dropdownToggle() {
-        if( this.state.dropdown ) this.setState({dropdown: ''})
-        else this.setState({dropdown: 'open'})
+        if( this.state.dropdown ) {
+            this.setState({dropdown: ''});
+        } else {
+            this.setState({dropdown: 'open'});
+            this.addClickOutside();
+        }
     }
+
     dropdownSelect(event) {
         event.preventDefault();
         this.setState({
@@ -28,11 +36,27 @@ export default class Dropdown extends Component {
 
         this.props.updateStore(event.currentTarget.innerText);
     }
+
+    addClickOutside() {
+        window.addEventListener('click', this.windowEvent);
+    }
+
+    removeClickOutside() {
+        window.removeEventListener('click', this.windowEvent);
+    }
+
+    windowEvent(event) {
+        if (!this.refSelect.current.contains(event.target)) {
+            this.setState({dropdown: ''});
+            this.removeClickOutside();
+        }
+    }
+
     render() {
         const { values, orderby } = this.props;
 
         return(
-            <div className="custom-select" ref="">
+            <div className="custom-select" ref={this.refSelect}>
                 <button type="button" className="custom-select-header" data-selected={this.state.select} onClick={this.dropdownToggle}>
                     <span className="custom-select-header__option">{orderby}</span>
                 </button>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-// style
 import './index.scss'
 
 export default class PageTitle extends Component {
