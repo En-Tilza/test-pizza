@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 
 import './index.scss'
 
-import driverMale from '/images/driver-male.svg';
-import driverFamale from '/images/driver-famale.svg';
-import waiter from '/images/waiter.svg';
-import waitres from '/images/waitres.svg';
-import chefMale from '/images/chef-male.svg';
-import chefFamale from '/images/chef-famale.svg';
+import driverMale from 'images/driver-male.svg';
+import driverFamale from 'images/driver-famale.svg';
+import waiter from 'images/waiter.svg';
+import waitres from 'images/waitres.svg';
+import chefMale from 'images/chef-male.svg';
+import chefFamale from 'images/chef-famale.svg';
 
 
 
