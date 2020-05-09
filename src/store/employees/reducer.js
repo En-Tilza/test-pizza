@@ -1,35 +1,21 @@
 import * as types from './types';
 
+const initialState = {
+    employees: []
+}
 
-
-export default function reducer(state = {}, action) {
+export default function reducer(state = initialState, action) {
     switch(action.type) {
         case types.ADD_EMPLOYEES:
-            return state = {
+            return {
                 ...state,
-                employees: action.employees
+                employees: [
+                    ...action.employees
+                ]
             }
 
-        case types.SORT_BY_NAME_ASC:
-            return state = {
-                ...state,
-                employees: action.employees
-            }
-
-        case types.SORT_BY_NAME_DESC:
-            return state = {
-                ...state,
-                employees: action.employees
-            }
-
-        case types.SORT_BY_DATE_ASC:
-            return state = {
-                ...state,
-                employees: action.employees
-            }
-
-        case types.SORT_BY_DATE_DESC:
-            return state = {
+        case types.EMPLOYEES_SORT:
+            return {
                 ...state,
                 employees: action.employees
             }

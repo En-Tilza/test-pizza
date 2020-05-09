@@ -22,6 +22,7 @@ function Home() {
                         <h2>Сотрудники</h2>
                     </div>
                 </div>
+
                 <Filters />
 
                 <ListEmployees />

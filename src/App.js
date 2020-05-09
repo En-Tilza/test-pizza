@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
+import { Provider } from 'react-redux';
+import { store } from 'store/index';
 
 
 
@@ -13,33 +15,57 @@ import PageWrapper from 'components/page-wrapper';
 import Home from 'pages/main-page';
 import Employees from 'pages/employees';
 import Employe from 'pages/employe';
+import { addEmployees } from 'store/employees/actions';
+
+import makeRequest from 'services/make-request';
 
 
 
-function App() {
-	return (
-		<Router>
-			<PageWrapper>
-				<Header />
+class App extends Component {
+	componentDidMount() {
+		this.getEmployees();
+	}
 
-				<Switch>
-					<Route path="/employees">
-						<Employees />
-					</Route>
+	async getEmployees() {
+		let request = {
+			method: 'GET',
+			employees: {
+				url: '/api/employees.json'
+			}
+		}
+	
+		let employees = await makeRequest(request.method, request.employees.url);
 
-					<Route path="/employee">
-						<Employe />
-					</Route>
+		store.dispatch(addEmployees(employees));
+	}
 
-					<Route path="/">
-						<Home />
-					</Route>
-				</Switch>
-			</PageWrapper>
-
-			<Footer />
-		</Router>
-	)
+	render() {
+		return (
+			<Provider store={store}>
+				<Router>
+					<PageWrapper>
+						<Header />
+	
+						<Switch>
+							<Route path="/employees">
+								<Employees />
+							</Route>
+	
+							<Route path="/employee">
+								<Employe />
+							</Route>
+	
+							<Route path="/">
+								<Home />
+							</Route>
+						</Switch>
+					</PageWrapper>
+	
+					<Footer />
+				</Router>
+			</Provider>
+		)
+	}
 }
 
 export default App

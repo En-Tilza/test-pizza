@@ -4,12 +4,7 @@ import './index.scss';
 
 
 export default class Checkbox extends Component {
-    constructor(props) {
-        super(props);
-
-        this.onChange = this.onChange.bind(this);
-    }
-    onChange(event) {
+    onChange = event => {
         let checked = event.target.checked;
         if( this.props.func )
             this.props.func(checked);

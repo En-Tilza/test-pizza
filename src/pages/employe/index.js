@@ -11,13 +11,7 @@ import Dropdown from 'components/dropdown';
 import Checkbox from 'components/checkbox';
 
 class Employee extends Component {
-    constructor(props) {
-        super(props);
-
-        this.dropdownName = this.dropdownName.bind(this);
-        this.userUpdate = this.userUpdate.bind(this);
-    }
-    dropdownName(text, target) {
+    dropdownName = (text, target) => {
         target.querySelector('.custom-select-header__option').innerText = text
     }
     translete(role) {
@@ -32,16 +26,10 @@ class Employee extends Component {
                 return 'ошибка';
         }
     }
-    async userUpdate(event) {
+    userUpdate = async event => {
         event.preventDefault();
-        let data = new FormData(event.target);
-        data.append('userId', this.props.store.employee.id)
 
-        let response = await fetch('api/employees.json', {
-            method: 'PUT',
-            body: data
-        }).then(response => response.json());
-        console.log(response)
+
     }
     render() {
         const { employee } = this.props.store;

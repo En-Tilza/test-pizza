@@ -10,7 +10,7 @@ export function addEmployees(employees) {
 export function sortByNameASC(employees) {
     employees = employees.sort((a, b) => a.name > b.name ? 1 : -1);
     return {
-        type: types.SORT_BY_NAME_ASC,
+        type: types.EMPLOYEES_SORT,
         employees
     };
 }
@@ -18,7 +18,7 @@ export function sortByNameASC(employees) {
 export function sortByNameDESC(employees) {
     employees = employees.sort((a, b) => a.name < b.name ? 1 : -1);
     return {
-        type: types.SORT_BY_NAME_DESC,
+        type: types.EMPLOYEES_SORT,
         employees
     };
 }
@@ -30,7 +30,7 @@ export function sortByDateASC(employees) {
         return aa < bb ? -1 : (aa > bb ? 1 : 0);
     });
     return {
-        type: types.SORT_BY_DATE_ASC,
+        type: types.EMPLOYEES_SORT,
         employees
     };
 }
@@ -42,7 +42,7 @@ export function sortByDateDESC(employees) {
         return aa > bb ? -1 : (aa < bb ? 1 : 0);
     });
     return {
-        type: types.SORT_BY_DATE_DESC,
+        type: types.EMPLOYEES_SORT,
         employees
     };
 }

@@ -17,22 +17,15 @@ class Filters extends Component {
     constructor(props) {
         super(props);
 
-        this.sortByName = this.sortByName.bind(this);
-        this.sortByDate = this.sortByDate.bind(this);
-        this.updateByPost = this.updateByPost.bind(this);
-        this.archive = this.archive.bind(this);
-        this.showAllEmployees = this.showAllEmployees.bind(this);
-
-
         this.filteredEmployees = [];
     }
 
-    sortByName(orderby) {
+    sortByName = orderby => {
         if( orderby === 'ASC' ) this.props.sortByNameASC(this.props.employees);
         if( orderby === 'DESC' ) this.props.sortByNameDESC(this.props.employees);
     }
 
-    sortByDate(orderby) {
+    sortByDate = orderby => {
         if( orderby === 'ASC' ) this.props.sortByDateASC(this.props.employees);
         if( orderby === 'DESC' ) this.props.sortByDateDESC(this.props.employees);
     }
@@ -49,21 +42,21 @@ class Filters extends Component {
         return newArr;
     }
 
-    updateByPost(orderby) {
+    updateByPost = orderby => {
         const newStore = this.sortByPost(orderby);
         this.props.addEmployees(newStore);
 
         this.filteredEmployees = newStore;
     }
 
-    archive(input) {
+    archive = input => {
         let arr = this.filteredEmployees.length ? this.filteredEmployees : this.allEmployees;
 
         const newStore = arr.filter(el => el.isArchive === input);
         this.props.addEmployees(newStore);
     }
 
-    showAllEmployees() {
+    showAllEmployees = () => {
         this.props.addEmployees(this.allEmployees);
         this.filteredEmployees = [];
     }
