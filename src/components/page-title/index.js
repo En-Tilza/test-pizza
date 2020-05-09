@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import './index.scss'
 
-export default class PageTitle extends Component {
-    render() {
-        return(
-            <h1 className="page-title">{this.props.children}</h1>
-        )
-    }
+export default function PageTitle(props) {
+    return(
+        <h1 className="page-title">{props.children}</h1>
+    )
 }

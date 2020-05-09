@@ -46,7 +46,7 @@ class Employee extends Component {
     render() {
         const { employee } = this.props.store;
 
-        let role = this.translete(employee.role);
+        const role = this.translete(employee.role);
 
 
         return(

@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addEmployees, sortByNameASC, sortByNameDESC, sortByDateASC, sortByDateDESC } from 'store/employees/actions';
+import {
+    addEmployees, 
+    sortByNameASC, 
+    sortByNameDESC, 
+    sortByDateASC, 
+    sortByDateDESC
+} from 'store/employees/actions';
 
 import './index.scss';
 
@@ -39,14 +45,12 @@ class Filters extends Component {
             case 'Официант': role = 'waiter'; break;
             default: break;
         }
-        let newArr = this.allEmployees.filter(el => {
-            return role === el.role;
-        })
+        const newArr = this.allEmployees.filter(el => role === el.role)
         return newArr;
     }
 
     updateByPost(orderby) {
-        let newStore = this.sortByPost(orderby);
+        const newStore = this.sortByPost(orderby);
         this.props.addEmployees(newStore);
 
         this.filteredEmployees = newStore;
@@ -55,12 +59,11 @@ class Filters extends Component {
     archive(input) {
         let arr = this.filteredEmployees.length ? this.filteredEmployees : this.allEmployees;
 
-        let newStore = arr.filter(el => el.isArchive === input);
+        const newStore = arr.filter(el => el.isArchive === input);
         this.props.addEmployees(newStore);
     }
 
     showAllEmployees() {
-        console.log( this.allEmployees )
         this.props.addEmployees(this.allEmployees);
         this.filteredEmployees = [];
     }

@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import './index.scss'
 
-export default class Container extends Component {
-    render() {
-        return(
-            <div className="container">{this.props.children}</div>
-        )
-    }
+export default function Container(props) {
+    return(
+        <div className="container">{props.children}</div>
+    )
 }

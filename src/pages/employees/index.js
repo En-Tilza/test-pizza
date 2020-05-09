@@ -1,45 +1,23 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 
 import './index.scss';
 
-import Container from 'components/container';
 import PageSection from 'components/page-section';
+import Container from 'components/container';
 import PageTitle from 'components/page-title';
 import Filters from 'components/filters';
-import Card from 'components/card';
+import ListEmployees from 'components/employees';
 
-class Employees extends Component {
-    render() {
-        const { employees } = this.props.employees
-        return(
-            <PageSection>
-                <Container>
-                    <PageTitle>Сотрудники</PageTitle>
+export default function Employees() {
+    return(
+        <PageSection>
+            <Container>
+                <PageTitle>Сотрудники</PageTitle>
 
-                    <Filters />
+                <Filters />
 
-                    <div className="employees">
-                        {employees ? (
-                            <>
-                                {employees.map((employe, index) =>
-                                    <Card employe={employe} key={index} />
-                                )}
-                            </>
-                        ): (
-                            <div>loading...</div>
-                        )}
-                    </div>
-                </Container>
-            </PageSection>
-        )
-    }
+                <ListEmployees />
+            </Container>
+        </PageSection>
+    )
 }
-
-
-function mapStateToProps(state) {
-    return {
-        employees: state.employees
-    }
-}
-export default connect(mapStateToProps)(Employees)
