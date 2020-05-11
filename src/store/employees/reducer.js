@@ -20,6 +20,12 @@ export default function reducer(state = initialState, action) {
                 employees: action.employees
             }
 
+        case types.UPDATE_EMPLOYEE:
+            return {
+                ...state,
+                employees: action.employees
+            }
+
         default:
             return state;
     }

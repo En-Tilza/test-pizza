@@ -34,7 +34,8 @@ export default class Dropdown extends Component {
             select: event.currentTarget.innerText
         })
 
-        this.props.func(event.currentTarget.innerText, this.refSelect.current);
+        if( this.props.func )
+            this.props.func(event.currentTarget.innerText, this.refSelect.current);
     }
 
     addClickOutside() {
@@ -53,11 +54,11 @@ export default class Dropdown extends Component {
     }
 
     render() {
-        const { values, name } = this.props;
+        const { values, name, inputName } = this.props;
 
         return(
             <div className="custom-select" ref={this.refSelect}>
-                <input type="hidden" name="select" value={name}/>
+                <input type="hidden" name={inputName ? inputName : "select"} value={this.state.select}/>
                 <button type="button" className="custom-select-header" data-selected={this.state.select} onClick={this.dropdownToggle}>
                     <span className="custom-select-header__option">{name}</span>
                 </button>

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import InputMask from 'react-input-mask';
 
+import { updateEmployee } from 'store/employees/actions';
+
 import './index.scss';
 
 import Container from 'components/container';
@@ -14,7 +16,7 @@ class Employee extends Component {
     dropdownName = (text, target) => {
         target.querySelector('.custom-select-header__option').innerText = text
     }
-    translete(role) {
+    transleteRu(role) {
         switch(role) {
             case 'driver':
                 return 'Водитель';
@@ -26,15 +28,45 @@ class Employee extends Component {
                 return 'ошибка';
         }
     }
+    transleteEn(role) {
+        switch(role) {
+            case 'Водитель':
+                return 'driver';
+            case 'Официант':
+                return 'waiter';
+            case 'Повар':
+                return 'cook';
+            default:
+                return 'ошибка';
+        }
+    }
     userUpdate = async event => {
         event.preventDefault();
 
+        // Вместо отправки формдаты на сервер обновляю state здесь.
+        const name      = document.querySelector('[name=employee-name]').value;
+        const select    = document.querySelector('[name=select]').value;
+        const phone     = document.querySelector('[name=employee-phone]').value;
+        const birthday  = document.querySelector('[name=employee-birthday]').value;
+        const archive   = document.querySelector('[name=archive]').checked;
 
+        const newArr = this.props.store.employees.map(elem => {
+            if( elem.id === +getId() ) {
+                if( name ) elem.name = name;
+                if( phone ) elem.phone = phone;
+                if( birthday ) elem.birthday = birthday;
+                if( select ) elem.role = this.transleteEn(select);
+                elem.isArchive = archive;
+            }
+            return elem
+        })
+
+        this.props.updateEmployee(newArr);
     }
     render() {
         const { employee } = this.props.store;
 
-        const role = this.translete(employee.role);
+        const role = this.transleteRu(employee.role);
 
 
         return(
@@ -108,15 +140,15 @@ function getEmployeeById(id, arr) {
     return obj
 }
 
-function mapStateToProps(state) {
-    let employee
-
-    if( state.employees ) employee = getEmployeeById( +getId(), state.employees.employees )
-    return {
-        store: {
-            employee
-        }
+const mapStateToProps = state => ({
+    store: {
+        employees: state.employees.employees,
+        employee: getEmployeeById( +getId(), state.employees.employees ),
     }
-}
+});
 
-export default connect(mapStateToProps)(Employee)
+const mapDispatchToProps = dispatch => ({
+    updateEmployee: employees => dispatch(updateEmployee(employees))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Employee)

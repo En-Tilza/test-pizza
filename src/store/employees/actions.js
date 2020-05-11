@@ -46,3 +46,10 @@ export function sortByDateDESC(employees) {
         employees
     };
 }
+
+export function updateEmployee(employees) {
+    return {
+        type: types.UPDATE_EMPLOYEE,
+        employees
+    };
+}
