@@ -28,12 +28,14 @@ class Modal extends Component {
         this.setState({
             modal: true
         })
+        document.body.classList.add('opened');
     }
 
     closeModal = () => {
         this.setState({
             modal: false
         })
+        document.body.classList.remove('opened');
     }
 
     addNewEmployee = event => {

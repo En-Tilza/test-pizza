@@ -21,6 +21,12 @@ body, ul, ol, p {
     padding: 0;
 }
 
+body {
+    &.opened {
+        overflow: hidden;
+    }
+}
+
 .main-color {
     color: $main-color;
 }
