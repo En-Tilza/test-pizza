@@ -4,4 +4,20 @@
     margin-bottom: 30px;
     display: flex;
     flex-wrap: wrap;
+    &__item {
+        margin: calcFluid(5, 15);
+        width: calcFluidM(10, 30, 320, 1920, 20);
+    }
+}
+
+
+
+
+@media(max-width: 767px){
+    .filters {
+        &__item {
+            width: calcFluidM(10, 30, 320, 1920, 50);
+        }
+    }
+    
 }

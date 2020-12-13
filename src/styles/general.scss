@@ -48,3 +48,10 @@ body {
     padding: calcFluid(20, 30) 0;
     flex-grow: 1;
 }
+
+.flex-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin: calcFluid(-5, -15);
+    width: 100%;
+}

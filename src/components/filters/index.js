@@ -33,10 +33,16 @@ const Filters = props => {
 
     return (
         <div className="filters">
-            {filterOption.map((options, index) =>
-                <Dropdown values={options.values} name={options.name} title={options.initial} functionFiltering={filtering} key={index} />
-            )}
-            <Checkbox name={'isArchive'} filtering={true}>В архиве</Checkbox>
+            <div className="flex-wrapper">
+                {filterOption.map((options, index) =>
+                    <div className="filters__item" key={index}>
+                        <Dropdown values={options.values} name={options.name} title={options.initial} functionFiltering={filtering} />
+                    </div>
+                )}
+                <div className="filters__item">
+                    <Checkbox name={'isArchive'} filtering={true}>В архиве</Checkbox>
+                </div>
+            </div>
         </div>
     )
 }
