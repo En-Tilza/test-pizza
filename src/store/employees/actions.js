@@ -1,55 +1,29 @@
-import * as types from './types';
-  
-export function addEmployees(employees) {
+import {
+    ADD_EMPLOYEES,
+    ADD_EMPLOYEE,
+    FILTER_EMPLOYEES 
+} from './consts';
+
+export const addEmployees = employees => {
     return {
-        type: types.ADD_EMPLOYEES,
+        type: ADD_EMPLOYEES,
         employees
     };
 }
 
-export function sortByNameASC(employees) {
-    employees = employees.sort((a, b) => a.name > b.name ? 1 : -1);
+export const addEmployee = (newFilteringEmplyees, newEmployee) => {
     return {
-        type: types.EMPLOYEES_SORT,
+        type: ADD_EMPLOYEE,
+        newFilteringEmplyees,
+        newEmployee
+    };
+}
+
+export const filterEmployees = employees => {
+    return {
+        type: FILTER_EMPLOYEES,
         employees
     };
 }
 
-export function sortByNameDESC(employees) {
-    employees = employees.sort((a, b) => a.name < b.name ? 1 : -1);
-    return {
-        type: types.EMPLOYEES_SORT,
-        employees
-    };
-}
 
-export function sortByDateASC(employees) {
-    employees = employees.sort(function(a, b){
-        var aa = a.birthday.split('.').reverse().join(),
-            bb = b.birthday.split('.').reverse().join();
-        return aa < bb ? -1 : (aa > bb ? 1 : 0);
-    });
-    return {
-        type: types.EMPLOYEES_SORT,
-        employees
-    };
-}
-
-export function sortByDateDESC(employees) {
-    employees = employees.sort(function(a, b){
-        var aa = a.birthday.split('.').reverse().join(),
-            bb = b.birthday.split('.').reverse().join();
-        return aa > bb ? -1 : (aa < bb ? 1 : 0);
-    });
-    return {
-        type: types.EMPLOYEES_SORT,
-        employees
-    };
-}
-
-export function updateEmployee(employees) {
-    return {
-        type: types.UPDATE_EMPLOYEE,
-        employees
-    };
-}

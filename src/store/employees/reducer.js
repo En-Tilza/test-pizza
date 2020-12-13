@@ -1,32 +1,50 @@
-import * as types from './types';
+import {
+    ADD_EMPLOYEES,
+    ADD_EMPLOYEE,
+    FILTER_EMPLOYEES
+} from './consts';
 
 const initialState = {
-    employees: []
+    employees: [],
+    filteringEmplyees: []
 }
 
-export default function reducer(state = initialState, action) {
+const reducer = (state = initialState, action) => {
     switch(action.type) {
-        case types.ADD_EMPLOYEES:
+        case ADD_EMPLOYEES:
             return {
-                ...state,
                 employees: [
+                    ...state.employees,
+                    ...action.employees
+                ],
+                filteringEmplyees: [
+                    ...state.filteringEmplyees,
                     ...action.employees
                 ]
             }
 
-        case types.EMPLOYEES_SORT:
+        case ADD_EMPLOYEE:
             return {
-                ...state,
-                employees: action.employees
+                employees: [
+                    ...state.employees,
+                    action.newEmployee
+                ],
+                filteringEmplyees: action.newFilteringEmplyees
             }
 
-        case types.UPDATE_EMPLOYEE:
+        case FILTER_EMPLOYEES:
             return {
-                ...state,
-                employees: action.employees
-            }
+                employees: [
+                    ...state.employees
+                ],
+                filteringEmplyees: [
+                    ...action.employees
+                ]
+            };
 
         default:
             return state;
     }
 }
+
+export default reducer;

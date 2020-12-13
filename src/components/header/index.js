@@ -1,22 +1,26 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
-import 'style/general.scss';
+import Container from 'components/Container';
+
 import './index.scss';
 
-import Logo from 'components/logo';
-import Container from 'components/container';
-import Menu from 'components/menu';
-
-export default function Header() {
-    return(
+const Header = () => {
+    return (
         <header className="header">
             <Container>
                 <div className="header__wrapper">
-                    <Logo />
+                    <a href="/" className="logo">Logo</a>
 
-                    <Menu />
+                    <nav>
+                        <ul className="menu">
+                            <li><Link to="/">Сотрудники</Link></li>
+                        </ul>
+                    </nav>
                 </div>
             </Container>
         </header>
     )
 }
+
+export default Header;

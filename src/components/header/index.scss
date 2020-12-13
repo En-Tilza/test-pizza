@@ -1,11 +1,37 @@
-@import '../../style/theme.scss';
+@import 'styles/theme.scss';
+
 
 .header {
-    background-color: #313131;
+    padding: 15px 0;
+    border-bottom: 1px solid $border-color;
     &__wrapper {
-        height: 50px;
         display: flex;
         align-items: center;
         justify-content: space-between;
+    }
+}
+
+.logo {
+    font-size: calcFluid(16, 30);
+    font-weight: 700;
+    line-height: 1;
+    color: #333;
+}
+
+.menu {
+    display: flex;
+    li {
+        &:not(:last-child) {
+            margin-right: calcFluid(15, 30);
+        }
+        a {
+            font-size: calcFluid(14, 18);
+            line-height: 1;
+            color: #333;
+            transition: .3s;
+            &:hover {
+                color: $main-color;
+            }
+        }
     }
 }

@@ -1,21 +1,19 @@
 import React from 'react';
 
+import Container from 'components/Container';
+
 import './index.scss';
 
-import Logo from 'components/logo';
-import Container from 'components/container';
-import Menu from 'components/menu';
-
-export default function Footer() {
-    return(
+const Footer = () => {
+    return (
         <footer className="footer">
             <Container>
                 <div className="footer__wrapper">
-                    <Logo />
-
-                    <Menu />
+                    <p className="copyright">© копирайт</p>
                 </div>
             </Container>
         </footer>
     )
 }
+
+export default Footer;

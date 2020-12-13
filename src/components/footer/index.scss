@@ -1,12 +1,12 @@
-@import '../../style/theme.scss';
-
 .footer {
-    background-color: #313131;
+    margin-top: auto;
+    padding: 15px 0;
     &__wrapper {
-        height: 50px;
         display: flex;
-        align-items: center;
-        justify-content: space-between;
     }
 }
 
+.copyright {
+    font-size: calcFluid(14, 18);
+    line-height: 1;
+}

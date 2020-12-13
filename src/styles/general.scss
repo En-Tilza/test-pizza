@@ -1,0 +1,50 @@
+@import './theme.scss';
+
+body, button, input, textarea {
+    font-family: Roboto, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a, a:hover {
+    text-decoration: none;
+}
+
+ul, li {
+    list-style-type: none;
+}
+
+body, ul, ol, p, h1, h2, h3, h4 {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    &.opened {
+        overflow: hidden;
+    }
+}
+
+.main-color {
+    color: $main-color;
+}
+
+
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.page {
+    padding: calcFluid(20, 30) 0;
+    flex-grow: 1;
+}

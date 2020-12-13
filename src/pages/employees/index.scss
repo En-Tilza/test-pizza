@@ -1,0 +1,7 @@
+@import 'styles/theme';
+
+.flex-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin: calcFluid(-5, -15);
+}

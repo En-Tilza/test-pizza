@@ -1,8 +1,10 @@
-@import '../../style/theme.scss';
+@import 'styles/theme';
+
 
 .custom-select {
 	position: relative;
-	width: 150px;
+    width: 150px;
+    margin-right: 15px;
 	&:hover {
 		.custom-select-header__text {
 			&:after {
@@ -33,7 +35,6 @@
 		line-height: 18px;
 		font-weight: 400;
 		color: #333;
-		// border-bottom: 1px dashed rgba(#333, .75);
 		display: inline-block;
 		transition: .3s;
 		position: relative;
@@ -44,7 +45,6 @@
 			left: 0;
 			right: 0;
 			height: 1px;
-			// background-image: url(../images/dashed.png);
 			background-position: center;
 			transition: .3s;
 		}
@@ -62,14 +62,13 @@
     padding: 15px 15px;
     transition: .2s;
     opacity: 0;
-    z-index: -1;
     visibility: hidden;
     background-color: #fff;
     width: 100%;
+    z-index: 1;
 	&.open {
         transition: opacity .5s;
 		opacity: 1;
-		z-index: 1;
 		visibility: visible;
     }
     &__item {

@@ -8,8 +8,6 @@ import employees from './employees/reducer';
 
 const rootReducer = combineReducers({ employees });
 
-
-
 const makeStore = (initialState = {}) => {
     let store = createStore(
         rootReducer,
@@ -21,4 +19,4 @@ const makeStore = (initialState = {}) => {
 }
 
 
-export let store = makeStore();
+export const store = makeStore();

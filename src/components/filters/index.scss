@@ -1,28 +1,7 @@
-@import '../../style/theme.scss';
+@import 'styles/theme';
 
-.filter {
+.filters {
+    margin-bottom: 30px;
     display: flex;
-    align-items: center;
     flex-wrap: wrap;
-    margin-bottom: 50px;
-    & > * {
-        margin-bottom: 10px;
-        &:not(:last-child) {
-            margin-right: 15px;
-        }
-    }
-}
-.reset-filters {
-    display: block;
-    height: 40px;
-    width: 150px;
-    cursor: pointer;
-    background-color: $main-color;
-    color: #313131;
-    border: 2px solid $main-color;
-    border-radius: 4px;
-    transition:.2s;
-    &:hover {
-        background-color: transparent;
-    }
 }

@@ -1,71 +1,71 @@
-import React, { Component } from 'react';
+import React, { useState } from "react";
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route
+    BrowserRouter as Router,
+    Switch,
+    Route
 } from "react-router-dom";
-import { Provider } from 'react-redux';
-import { store } from 'store/index';
+
+
+import Employees from 'pages/Employees';
+import Employee from 'pages/Employee';
+import Header from 'components/Header';
+import Footer from 'components/Footer';
+
+import 'styles/general.scss';
+
+
+import { useLocalStorage } from "hooks/useLocalStorage";
 
 
 
-import Header from 'components/header';
-import Footer from 'components/footer';
-import PageWrapper from 'components/page-wrapper';
-import Home from 'pages/main-page';
-import Employees from 'pages/employees';
-import Employe from 'pages/employe';
-import { addEmployees } from 'store/employees/actions';
-
-import makeRequest from 'services/make-request';
-
-
-
-class App extends Component {
-	componentDidMount() {
-		this.getEmployees();
-	}
-
-	async getEmployees() {
-		let request = {
-			method: 'GET',
-			employees: {
-				url: '/api/employees.json'
-			}
-		}
-	
-		let employees = await makeRequest(request.method, request.employees.url);
-
-		store.dispatch(addEmployees(employees));
-	}
-
-	render() {
-		return (
-			<Provider store={store}>
-				<Router>
-					<PageWrapper>
-						<Header />
-	
-						<Switch>
-							<Route path="/employees">
-								<Employees />
-							</Route>
-	
-							<Route path="/employee">
-								<Employe />
-							</Route>
-	
-							<Route path="/">
-								<Home />
-							</Route>
-						</Switch>
-					</PageWrapper>
-	
-					<Footer />
-				</Router>
-			</Provider>
-		)
-	}
+const getEmployees = async () => {
+    return await new Promise((resolve, reject) => {
+        fetch('./api/employees.json', {
+            method: 'GET'
+        }).then(resp => {
+            if (resp.status == 200) {
+                resolve(resp.json());
+            } else {
+                reject(Error('didn\'t load successfully; error code:' + resp.statusText));
+            }
+        })
+    })
 }
 
-export default App
+
+
+const App = () => {
+    const [data, setData] = useLocalStorage('employees');
+    const item = window.localStorage.getItem('employees');
+
+    useState(() => {
+        const awaitEmployees = async () => {
+            const store = item ? JSON.parse(item) : await getEmployees();
+            setData(store);
+        };
+
+        awaitEmployees();
+    });
+    return (
+        <Router>
+            <div className="page-wrapper">
+                <Header />
+
+                <Switch>
+                    <Route path="/employee">
+                        <Employee />
+                    </Route>
+
+                    <Route path="/">
+                        <Employees />
+                    </Route>
+                </Switch>
+            </div>
+
+            <Footer />
+        </Router>
+    );
+}
+
+
+export default App;
